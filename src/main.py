@@ -8,7 +8,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from pymongo import MongoClient
 
 app = flask.Flask(__name__)
-cache = redis.Redis(host='localhost', port=6380)
+cache = redis.Redis(host='192.168.1.15', port=6380)
+print(cache.ping())
 
 mongo_client = MongoClient('mongodb://contaMongo:!%40MongoConta@tccurbstads.com:27017/?authMechanism=DEFAULT')
 mongo_db = mongo_client['urbs']
