@@ -3,3 +3,12 @@ redis
 requests
 pymongo
 APScheduler
+Keras
+requests
+pandas
+joblib
+numpy
+scipy
+scikit-learn
+tensorflow
+scikit-spatial
