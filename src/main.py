@@ -30,7 +30,7 @@ def update_redis_data():
         bus['refresh'] = refresh_datetime
         grouped_by_line[bus['line']].append(bus)
     for bus in bus_data:
-        cache.set(f"bus_bus['id']", f"{bus['lat']},{bus['lon']}")
+        cache.set(f"bus_{bus['id']}", f"{bus['lat']},{bus['lon']}")
     for line in grouped_by_line.keys():
         cache.set(f"line_{line}", json.dumps(grouped_by_line[line], default=str))
 
