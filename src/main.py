@@ -1,4 +1,5 @@
 from collections import defaultdict
+from datetime import datetime
 import json
 import redis
 import requests
@@ -23,6 +24,9 @@ def update_redis_data():
     cache.delete('bus_data')
     grouped_by_line = defaultdict(list)
     for bus in bus_data:
+        refresh_time = datetime.strptime(bus['refresh'], '%H:%M').time()
+        refresh_datetime = datetime.combine(datetime.now().date(), refresh_time)
+        bus['refresh'] = refresh_datetime
         grouped_by_line[bus['line']].append(bus)
     for bus in bus_data:
         cache.set(bus['id'], f"{bus['lat']},{bus['lon']}")
